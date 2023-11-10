@@ -8,30 +8,35 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.SimpleCursorAdapter
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import ponce.victor.agendapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var txtResults: TextView
+    private lateinit var binding: ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         databaseHelper = DatabaseHelper(this)
 
-        val listView = findViewById<ListView>(R.id.list_view)
+        val recyclerView = binding.recyclerView
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
         val tasks = listOf(
             Task("Comprar", "10/11/2023", "10:00 AM", "Comprar pan y leche"),
             Task("Reunión", "11/11/2023", "02:00 PM", "Reunión con el equipo de desarrollo")
         )
-        val adapter = TaskAdapter(this, tasks)
-        listView.adapter = adapter
+        recyclerView.adapter = TaskAdapter(tasks)
 
         val addButton = findViewById(R.id.addButton) as FloatingActionButton
-        val cursor = databaseHelper.getAllEvents()
+        // val cursor = databaseHelper.getAllEvents()
 
 
         // fromColumns = arrayOf("nombre", "fecha", "hora", "descripcion", "lugar")

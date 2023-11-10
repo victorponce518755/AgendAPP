@@ -6,13 +6,60 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <!--Ocupo como una navbar arribam pero que solo diga agendapp en color blanco y de fondo verde-->
+
+
+    <!--Boton de agregar -->
+
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#4CAF50"
+        android:gravity="center"
+        android:text="AgendaApp"
+        android:textColor="#FAF6F6"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/list_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="375dp"
+        android:layout_height="571dp"
+        android:layout_marginBottom="32dp"
+        android:background="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="100dp"
+        android:paddingRight="10dp"
+
+        android:paddingBottom="100dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:focusable="true"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

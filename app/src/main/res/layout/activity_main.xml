@@ -7,15 +7,15 @@
     tools:context=".MainActivity">
 
 
-    <!--Ocupo como una navbar arribam pero que solo diga agendapp en color blanco y de fondo verde-->
 
 
-    <!--Boton de agregar -->
+
+
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:background="#4CAF50"
         android:gravity="center"
         android:text="AgendaApp"
@@ -32,31 +32,34 @@
     <ListView
         android:id="@+id/list_view"
         android:layout_width="375dp"
-        android:layout_height="571dp"
+        android:layout_height="500dp"
         android:layout_marginBottom="32dp"
         android:background="@android:color/transparent"
         android:divider="@android:color/transparent"
         android:dividerHeight="10dp"
         android:paddingLeft="10dp"
-        android:paddingTop="100dp"
+        android:paddingTop="20dp"
         android:paddingRight="10dp"
 
-        android:paddingBottom="100dp"
+        android:paddingBottom="25dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+        app:layout_constraintBottom_toTopOf="@+id/addButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:clickable="true"
         android:focusable="true"
-
+        app:backgroundTint="#4CAF50"
+        app:srcCompat="@drawable/my_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
 
 

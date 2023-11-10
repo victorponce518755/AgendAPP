@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "ponce.victor.agendapp"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "ponce.victor.agendapp"

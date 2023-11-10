@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var txtResults: TextView
-    private  lateinit var listView: ArrayAdapter<String>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,14 +23,21 @@ class MainActivity : AppCompatActivity() {
         databaseHelper = DatabaseHelper(this)
 
         val listView = findViewById<ListView>(R.id.list_view)
+        val tasks = listOf(
+            Task("Comprar", "10/11/2023", "10:00 AM", "Comprar pan y leche"),
+            Task("Reunión", "11/11/2023", "02:00 PM", "Reunión con el equipo de desarrollo")
+        )
+        val adapter = TaskAdapter(this, tasks)
+        listView.adapter = adapter
+
         val addButton = findViewById(R.id.addButton) as FloatingActionButton
         val cursor = databaseHelper.getAllEvents()
 
 
-        //val fromColumns = arrayOf("nombre", "fecha", "hora", "descripcion", "lugar")
-        //val toViews = intArrayOf(R.id.nombre, R.id.fecha, R.id.hora, R.id.descripcion, R.id.lugar)
-        //val adapter = SimpleCursorAdapter(this, R.layout.activity_main, cursor, fromColumns, toViews, 0)
-        //listView.adapter = adapter
+        // fromColumns = arrayOf("nombre", "fecha", "hora", "descripcion", "lugar")
+        // toViews = intArrayOf(R.id.nombre, R.id.fecha, R.id.hora, R.id.descripcion, R.id.lugar)
+        // adapter = SimpleCursorAdapter(this, R.layout.activity_main, cursor, fromColumns, toViews, 0)
+        // listView.adapter = adapter
 
 
 
@@ -39,7 +45,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddEvent::class.java)
             startActivity(intent)
         }
-
-
     }
 }

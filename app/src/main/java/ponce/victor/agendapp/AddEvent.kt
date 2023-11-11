@@ -2,6 +2,7 @@ package ponce.victor.agendapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
@@ -40,18 +41,24 @@ class AddEvent : AppCompatActivity(){
         fun addEvent(){
             val name = editTextName.text.toString()
             val date = Date.valueOf(editTextDate.text.toString())
-            val time = Time.valueOf(editTextTime.text.toString())
+
+            val timeString = editTextTime.text.toString()
+            // Ajusta el formato de la cadena a "HH:mm:ss"
+            val adjustedTimeString = "$timeString:00"
+            // Intenta convertir el valor a Time
+            val time = Time.valueOf(adjustedTimeString)
+
             val description = editTextDescription.text.toString()
             val location = editTextLocation.text.toString()
-
             val success = databaseHelper.addEvent(name, date, time, description, location)
 
             if (success){
                 Toast.makeText(this, "Evento agregado", Toast.LENGTH_SHORT).show()
+                finish()
 
             }
             else{
-                Toast.makeText(this, "Error al agregar evento", Toast.LENGTH_SHORT).show()
+              Toast.makeText(this, "Error al agregar evento", Toast.LENGTH_SHORT).show()
             }
         }
 

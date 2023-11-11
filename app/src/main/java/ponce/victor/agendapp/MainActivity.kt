@@ -3,6 +3,7 @@ package ponce.victor.agendapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
@@ -26,13 +27,53 @@ class MainActivity : AppCompatActivity() {
         databaseHelper = DatabaseHelper(this)
 
         val recyclerView = binding.recyclerView
-
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val tasks = listOf(
-            Task("Comprar", "10/11/2023", "10:00 AM", "Comprar pan y leche"),
-            Task("Reunión", "11/11/2023", "02:00 PM", "Reunión con el equipo de desarrollo")
-        )
+        //Obtener datos de la base de datos
+        val cursor = databaseHelper.getAllEvents()
+        val tasks = mutableListOf<Task>()
+
+        //val tasks = listOf(
+        //    Task("Comprar", "10/11/2023", "10:00 AM", "Comprar pan y leche"),
+        //    Task("Reunión", "11/11/2023", "02:00 PM", "Reunión con el equipo de desarrollo")
+        //)
+
+        // Logs para imprimir las columnas disponibles
+        val columnNames = cursor.columnNames
+        for (column in columnNames) {
+            Log.d("Column Name", column)
+        }
+
+        //Procesar y recorrer el cursor
+        // Paso 2: Procesar el Cursor y crear la lista de tareas
+        if (cursor.moveToFirst()) {
+            val nameIndex = cursor.getColumnIndex("nombre")
+            val dateIndex = cursor.getColumnIndex("fecha")
+            val scheduleIndex = cursor.getColumnIndex("hora")
+            val descriptionIndex = cursor.getColumnIndex("descripcion")
+
+            do {
+                Log.d("MainActivity", "Iterating through cursor")
+
+                // Log de los índices
+                Log.d("MainActivity", "Index of name: $nameIndex")
+                Log.d("MainActivity", "Index of date: $dateIndex")
+                Log.d("MainActivity", "Index of schedule: $scheduleIndex")
+                Log.d("MainActivity", "Index of description: $descriptionIndex")
+
+                // Log de los valores de las columnas
+                val name = cursor.getString(nameIndex)
+                val date = cursor.getString(dateIndex)
+                val schedule = cursor.getString(scheduleIndex)
+                val description = cursor.getString(descriptionIndex)
+
+                Log.d("MainActivity", "Task: $name, $date, $schedule, $description")
+
+                tasks.add(Task(name, date, schedule, description))
+            } while (cursor.moveToNext())
+        }
+
+
         recyclerView.adapter = TaskAdapter(tasks)
 
         val addButton = findViewById(R.id.addButton) as FloatingActionButton

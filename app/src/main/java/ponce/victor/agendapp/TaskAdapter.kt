@@ -20,9 +20,10 @@ class TaskAdapter(private var tasks: List<Task>) : RecyclerView.Adapter<TaskAdap
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int){
         val task = tasks[position]
         holder.binding.tskName.text = task.name
-        holder.binding.tskDate.text = task.date
-        holder.binding.tskSchedule.text = task.schedule
-        holder.binding.tskDescription.text = task.description
+        holder.binding.tskDate.text = "Fecha: " + task.date
+        holder.binding.tskSchedule.text = "Hora: " + task.schedule
+        holder.binding.tskDescription.text = "Descripción: " + task.description
+        holder.binding.tskLocation.text = "Ubicación: " + task.location
     }
 
     override fun getItemCount(): Int {

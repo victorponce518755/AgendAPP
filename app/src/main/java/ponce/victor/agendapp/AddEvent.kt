@@ -1,6 +1,7 @@
 package ponce.victor.agendapp
 
 import android.content.Intent
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -40,7 +41,9 @@ class AddEvent : AppCompatActivity(){
 
         fun addEvent(){
             val name = editTextName.text.toString()
-            val date = Date.valueOf(editTextDate.text.toString())
+            val dateString = editTextDate.text.toString()
+            val formatter = SimpleDateFormat("dd/MM/yyyy")
+            val date = Date(formatter.parse(dateString).time)
 
             val timeString = editTextTime.text.toString()
             // Ajusta el formato de la cadena a "HH:mm:ss"
@@ -54,7 +57,6 @@ class AddEvent : AppCompatActivity(){
 
             if (success){
                 Toast.makeText(this, "Evento agregado", Toast.LENGTH_SHORT).show()
-
 
             }
             else{

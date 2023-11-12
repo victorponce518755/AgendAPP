@@ -66,6 +66,8 @@ class AddEvent : AppCompatActivity(){
 
         buttonAddEvent.setOnClickListener(){
             addEvent()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         val rtnButton = findViewById<FloatingActionButton>(R.id.rtnButton)

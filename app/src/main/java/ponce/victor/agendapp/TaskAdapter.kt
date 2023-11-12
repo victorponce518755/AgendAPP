@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ponce.victor.agendapp.databinding.TaskItemBinding
 import java.text.FieldPosition
 
-class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter(private var tasks: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
     class TaskViewHolder(val binding: TaskItemBinding) : RecyclerView.ViewHolder(binding.root)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder{
@@ -28,6 +28,8 @@ class TaskAdapter(private val tasks: List<Task>) : RecyclerView.Adapter<TaskAdap
     override fun getItemCount(): Int {
         return tasks.size
     }
+
+
 
 
 }

@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var txtResults: TextView
     private lateinit var binding: ActivityMainBinding
+    private lateinit var taskAdapter: TaskAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.adapter = TaskAdapter(tasks)
 
-        val addButton = findViewById(R.id.addButton) as FloatingActionButton
+        val addButton = findViewById<FloatingActionButton>(R.id.addButton)
         // val cursor = databaseHelper.getAllEvents()
 
 
@@ -91,5 +92,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AddEvent::class.java)
             startActivity(intent)
         }
+
+
+
     }
+
+
+
 }

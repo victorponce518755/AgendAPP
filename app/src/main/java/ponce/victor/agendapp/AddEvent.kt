@@ -54,7 +54,7 @@ class AddEvent : AppCompatActivity(){
 
             if (success){
                 Toast.makeText(this, "Evento agregado", Toast.LENGTH_SHORT).show()
-                finish()
+
 
             }
             else{
@@ -64,6 +64,14 @@ class AddEvent : AppCompatActivity(){
 
         buttonAddEvent.setOnClickListener(){
             addEvent()
+        }
+
+        val rtnButton = findViewById<FloatingActionButton>(R.id.rtnButton)
+
+
+        rtnButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
 

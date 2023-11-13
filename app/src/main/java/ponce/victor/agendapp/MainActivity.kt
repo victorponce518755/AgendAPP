@@ -1,17 +1,15 @@
 package ponce.victor.agendapp
 
 import android.content.Intent
+import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.ListView
-import android.widget.SimpleCursorAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ponce.victor.agendapp.databinding.ActivityMainBinding
+import java.util.Date
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             val dateIndex = cursor.getColumnIndex("fecha")
             val scheduleIndex = cursor.getColumnIndex("hora")
             val descriptionIndex = cursor.getColumnIndex("descripcion")
+            val locationIndex = cursor.getColumnIndex("lugar")
 
             do {
                 Log.d("MainActivity", "Iterating through cursor")
@@ -64,13 +63,15 @@ class MainActivity : AppCompatActivity() {
 
                 // Log de los valores de las columnas
                 val name = cursor.getString(nameIndex)
-                val date = cursor.getString(dateIndex)
-                val schedule = cursor.getString(scheduleIndex)
+                val sdf = SimpleDateFormat("dd/MM/yyyy")
+                val date = sdf.format(Date(cursor.getLong(dateIndex)))
+                val schedule = SimpleDateFormat("HH:mm").format(Date(cursor.getLong(scheduleIndex)))
                 val description = cursor.getString(descriptionIndex)
+                val location = cursor.getString(locationIndex)
 
-                Log.d("MainActivity", "Task: $name, $date, $schedule, $description")
+                Log.d("MainActivity", "Task: $name, $date, $schedule, $description, $location")
 
-                tasks.add(Task(name, date, schedule, description))
+                tasks.add(Task(name, date, schedule, description, location))
             } while (cursor.moveToNext())
         }
 
@@ -87,16 +88,12 @@ class MainActivity : AppCompatActivity() {
         // listView.adapter = adapter
 
 
-
         addButton.setOnClickListener {
             val intent = Intent(this, AddEvent::class.java)
             startActivity(intent)
+
+
         }
-
-
-
     }
-
-
 
 }

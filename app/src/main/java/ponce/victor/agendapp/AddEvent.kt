@@ -22,7 +22,9 @@ class AddEvent : AppCompatActivity() {
     private lateinit var editTextTime: EditText
     private lateinit var editTextDescription: EditText
     private lateinit var editTextLocation: EditText
+    private lateinit var editDeleteEvent: EditText
     private lateinit var buttonAddEvent: Button
+    private lateinit var buttonDeleteEvent: Button
 
     // metodo para crear la vista de la aplicacion y agregar un evento a la base de datos
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +38,9 @@ class AddEvent : AppCompatActivity() {
         editTextTime = findViewById(R.id.editTextTime)
         editTextDescription = findViewById(R.id.editTextDescription)
         editTextLocation = findViewById(R.id.editTextLocation)
+        editDeleteEvent = findViewById(R.id.editDeleteEvent)
         buttonAddEvent = findViewById(R.id.buttonAddEvent)
+        buttonDeleteEvent = findViewById(R.id.buttonDeleteEvent)
 
 
         // metodo para agregar un evento a la base de datos
@@ -74,6 +78,24 @@ class AddEvent : AppCompatActivity() {
 
 // metodo para regresar a la pantalla principal
         rtnButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+// metodo para eliminar un evento por su nombre
+        fun deleteEvent(){
+            val name = editDeleteEvent.text.toString()
+            val success = databaseHelper.deleteEventByName(name)
+
+            if (success){
+                Toast.makeText(this, "Evento eliminado", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Error al eliminar evento", Toast.LENGTH_SHORT).show()
+            }
+        }
+// listener para eliminar un evento
+        buttonDeleteEvent.setOnClickListener() {
+            deleteEvent()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }

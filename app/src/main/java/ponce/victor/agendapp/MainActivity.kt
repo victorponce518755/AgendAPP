@@ -35,10 +35,6 @@ class MainActivity : AppCompatActivity() {
         val cursor = databaseHelper.getAllEvents()
         val tasks = mutableListOf<Task>()
 
-        //val tasks = listOf(
-        //    Task("Comprar", "10/11/2023", "10:00 AM", "Comprar pan y leche"),
-        //    Task("Reunión", "11/11/2023", "02:00 PM", "Reunión con el equipo de desarrollo")
-        //)
 
         // Logs para imprimir las columnas disponibles
         // ciclo para recorrer los eventos de la base de datos
@@ -86,11 +82,6 @@ class MainActivity : AppCompatActivity() {
         // val cursor = databaseHelper.getAllEvents()
 
 
-        // fromColumns = arrayOf("nombre", "fecha", "hora", "descripcion", "lugar")
-        // toViews = intArrayOf(R.id.nombre, R.id.fecha, R.id.hora, R.id.descripcion, R.id.lugar)
-        // adapter = SimpleCursorAdapter(this, R.layout.activity_main, cursor, fromColumns, toViews, 0)
-        // listView.adapter = adapter
-
         // metodo para agregar un evento nuevo
         addButton.setOnClickListener {
             val intent = Intent(this, AddEvent::class.java)
@@ -98,6 +89,8 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+
+
     }
 
 }

@@ -90,4 +90,16 @@ class DatabaseHelper(context: Context) :
         return result > 0
     }
 
+    // metodo para eliminar un evento de la base de datos por su nombre
+    fun deleteEventByName (name: String): Boolean {
+        if (name.isNotBlank()) {
+            val db = this.writableDatabase
+            val result = db.delete("eventos", "nombre=?", arrayOf(name))
+
+            db.close()
+            return result > 0
+        }
+        return false
+    }
+
 }

@@ -102,6 +102,8 @@
 
     <!-- boton que funciona para agregar el evento despues de llenar todos los campos -->
 
+
+
     <Button
         android:id="@+id/buttonAddEvent"
         android:layout_width="wrap_content"
@@ -111,8 +113,37 @@
         app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextLocation"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <!-- Edit text que funciona como campo de entrada para el id del evento a eliminar -->
+    <EditText
+        android:id="@+id/editDeleteEvent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Nombre evento a eliminar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddEvent" />
+
+    <!-- boton que funciona para eliminar el evento despues de llenar el campo del id del evento a eliminar -->
+    <Button
+        android:id="@+id/buttonDeleteEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="305dp"
+        android:text="Eliminar evento"
+        app:backgroundTint="#FF0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editDeleteEvent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <!-- boton floating action que funciona para regresar a la pagina activity_main -->
 

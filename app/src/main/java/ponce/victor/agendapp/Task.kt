@@ -1,5 +1,6 @@
 package ponce.victor.agendapp
 
+// clase para crear la base de datos
 data class Task(
     val name: String,
     val date: String,

@@ -13,7 +13,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.sql.Date
 import java.sql.Time
 
-class AddEvent : AppCompatActivity(){
+// clase para agregar un evento a la base de datos
+class AddEvent : AppCompatActivity() {
 
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var editTextName: EditText
@@ -23,13 +24,13 @@ class AddEvent : AppCompatActivity(){
     private lateinit var editTextLocation: EditText
     private lateinit var buttonAddEvent: Button
 
-
+    // metodo para crear la vista de la aplicacion y agregar un evento a la base de datos
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_event)
 
         databaseHelper = DatabaseHelper(this)
-
+// se obtienen los datos del evento
         editTextName = findViewById(R.id.editTextName)
         editTextDate = findViewById(R.id.editTextDate)
         editTextTime = findViewById(R.id.editTextTime)
@@ -38,8 +39,8 @@ class AddEvent : AppCompatActivity(){
         buttonAddEvent = findViewById(R.id.buttonAddEvent)
 
 
-
-        fun addEvent(){
+        // metodo para agregar un evento a la base de datos
+        fun addEvent() {
             val name = editTextName.text.toString()
             val dateString = editTextDate.text.toString()
             val formatter = SimpleDateFormat("dd/MM/yyyy")
@@ -54,25 +55,24 @@ class AddEvent : AppCompatActivity(){
             val description = editTextDescription.text.toString()
             val location = editTextLocation.text.toString()
             val success = databaseHelper.addEvent(name, date, time, description, location)
-
-            if (success){
+// se muestra un mensaje de exito o error al agregar el evento
+            if (success) {
                 Toast.makeText(this, "Evento agregado", Toast.LENGTH_SHORT).show()
 
-            }
-            else{
-              Toast.makeText(this, "Error al agregar evento", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Error al agregar evento", Toast.LENGTH_SHORT).show()
             }
         }
-
-        buttonAddEvent.setOnClickListener(){
+// se obtienen los datos del evento
+        buttonAddEvent.setOnClickListener() {
             addEvent()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
+// boton para regresar a la pantalla principal
         val rtnButton = findViewById<FloatingActionButton>(R.id.rtnButton)
 
-
+// metodo para regresar a la pantalla principal
         rtnButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

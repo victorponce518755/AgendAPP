@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-
+    <!-- TextView para hacer el encabezado de la app  -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
@@ -23,6 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Edit text que funciona como campo de entrada para el nombre del evento -->
+
     <EditText
         android:id="@+id/editTextName"
         android:layout_width="0dp"
@@ -35,6 +36,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <!-- Edit text que funciona como campo de entrada para la fecha en formato DD/MM/YYYY -->
 
     <EditText
         android:id="@+id/editTextDate"
@@ -49,6 +52,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
+
+    <!-- Edit text que funciona como campo de entrada para la hora del evento en formato HH:MM -->
+
     <EditText
         android:id="@+id/editTextTime"
         android:layout_width="0dp"
@@ -61,6 +67,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+
+    <!-- Edit text que funciona como campo de entrada para la descripcion del evento -->
+
 
     <EditText
         android:id="@+id/editTextDescription"
@@ -75,6 +84,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
 
+    <!-- Edit text que funciona como campo de entrada para el luga del evento -->
+
     <EditText
         android:id="@+id/editTextLocation"
         android:layout_width="0dp"
@@ -88,6 +99,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDescription" />
 
+
+    <!-- boton que funciona para agregar el evento despues de llenar todos los campos -->
+
     <Button
         android:id="@+id/buttonAddEvent"
         android:layout_width="wrap_content"
@@ -100,6 +114,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextLocation" />
 
+    <!-- boton floating action que funciona para regresar a la pagina activity_main -->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/rtnButton"

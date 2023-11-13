@@ -11,6 +11,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ponce.victor.agendapp.databinding.ActivityMainBinding
 import java.util.Date
 
+
+// clase principal de la aplicacion donde se muestran los eventos
 class MainActivity : AppCompatActivity() {
 
     private lateinit var databaseHelper: DatabaseHelper
@@ -18,13 +20,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var taskAdapter: TaskAdapter
 
-
+    // metodo para crear la vista de la aplicacion y mostrar los eventos
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         databaseHelper = DatabaseHelper(this)
 
+        // recycler view para mostrar los eventos
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -38,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         //)
 
         // Logs para imprimir las columnas disponibles
+        // ciclo para recorrer los eventos de la base de datos
         val columnNames = cursor.columnNames
         for (column in columnNames) {
             Log.d("Column Name", column)
@@ -75,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             } while (cursor.moveToNext())
         }
 
-
+        // Paso 3: Crear el adaptador y asignarlo al RecyclerView
         recyclerView.adapter = TaskAdapter(tasks)
 
         val addButton = findViewById<FloatingActionButton>(R.id.addButton)
@@ -87,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         // adapter = SimpleCursorAdapter(this, R.layout.activity_main, cursor, fromColumns, toViews, 0)
         // listView.adapter = adapter
 
-
+        // metodo para agregar un evento nuevo
         addButton.setOnClickListener {
             val intent = Intent(this, AddEvent::class.java)
             startActivity(intent)

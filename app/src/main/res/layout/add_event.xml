@@ -108,7 +108,7 @@
         android:layout_marginStart="7dp"
         android:clickable="true"
         android:focusable="true"
-        android:src="@drawable/baseline_arrow_back_24"
+        android:src="@drawable/ic_return"
         app:borderWidth="0dp"
         app:elevation="0dp"
         app:backgroundTint="#4CAF50"

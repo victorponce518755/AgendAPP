@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //Obtener datos de la base de datos
-        val cursor = databaseHelper.getAllEvents()
+        val cursor = databaseHelper.getAllEventsByDate()
         val tasks = mutableListOf<Task>()
 
 

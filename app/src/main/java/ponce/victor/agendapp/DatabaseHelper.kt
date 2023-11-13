@@ -59,6 +59,12 @@ class DatabaseHelper(context: Context) :
         return db.rawQuery("SELECT * FROM eventos", null)
     }
 
+    // metodo para obtener todos los eventos de la base de datos por orden de fecha
+    fun getAllEventsByDate(): Cursor {
+        val db = this.writableDatabase
+        return db.rawQuery("SELECT * FROM eventos ORDER BY fecha", null)
+    }
+
     // metodo para obtener un evento en especifico de la base de datos
     fun updateEvent(
         id: String,

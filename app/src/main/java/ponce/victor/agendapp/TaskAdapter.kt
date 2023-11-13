@@ -46,14 +46,11 @@ class TaskAdapter(private var tasks: List<Task>) :
 
     // Método para abrir Google Maps, con la ubicación del evento
     fun openGoogleMaps(location: String, context: Context) {
-        val gmmIntentUri: Uri = Uri.parse("geo:0,0?q=$location")
-        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        val mapIntentUri: Uri = Uri.parse("http://maps.google.com/maps?q=$location")
+        val mapIntent = Intent(Intent.ACTION_VIEW, mapIntentUri)
 
         // Agregar logs para verificar la información de ubicación
         Log.d("TaskAdapter", "Ubicación a abrir en Google Maps: $location")
-
-        // Aquí se establece el paquete para abrir Google Maps específicamente
-        mapIntent.setPackage("com.google.android.apps.maps")
 
         // Verificar si hay una aplicación que pueda manejar el Intent
         if (mapIntent.resolveActivity(context.packageManager) != null) {

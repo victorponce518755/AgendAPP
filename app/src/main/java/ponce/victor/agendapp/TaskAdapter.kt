@@ -33,7 +33,7 @@ class TaskAdapter(private var tasks: List<Task>) :
         holder.binding.tskDescription.text = "Descripción: " + task.description
         holder.binding.tskLocation.text = "Ubicación: " + task.location
 
-
+        // Agregar un listener para abrir Google Maps
         holder.binding.tskLocation.setOnClickListener {
             openGoogleMaps(task.location, holder.binding.tskLocation.context)
         }
@@ -44,7 +44,7 @@ class TaskAdapter(private var tasks: List<Task>) :
         return tasks.size
     }
 
-    // Método público para abrir Google Maps con la ubicación específica
+    // Método para abrir Google Maps, con la ubicación del evento
     fun openGoogleMaps(location: String, context: Context) {
         val gmmIntentUri: Uri = Uri.parse("geo:0,0?q=$location")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)

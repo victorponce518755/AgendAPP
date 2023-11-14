@@ -49,16 +49,14 @@ class TaskAdapter(private var tasks: List<Task>) :
         val mapIntentUri: Uri = Uri.parse("http://maps.google.com/maps?q=$location")
         val mapIntent = Intent(Intent.ACTION_VIEW, mapIntentUri)
 
-        // Agregar logs para verificar la información de ubicación
-        Log.d("TaskAdapter", "Ubicación a abrir en Google Maps: $location")
 
         // Verificar si hay una aplicación que pueda manejar el Intent
         if (mapIntent.resolveActivity(context.packageManager) != null) {
-            Log.d("TaskAdapter", "Google Maps está instalado. Abriendo Google Maps.")
+
             context.startActivity(mapIntent)
         } else {
             // Manejar el caso en que Google Maps no esté instalado
-            Log.d("TaskAdapter", "Google Maps no está instalado.")
+
             Toast.makeText(context, "Google Maps no está instalado.", Toast.LENGTH_LONG).show()
         }
     }
